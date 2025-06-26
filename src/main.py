@@ -1,18 +1,47 @@
-import pystray
 from data.get_data import get_image
-from dotenv import load_dotenv
 
-import data.get_data
+from PySide6.QtGui import QIcon, QAction
+from PySide6.QtWidgets import QApplication, QSystemTrayIcon, QMenu
 
-load_dotenv()
+app = QApplication([])
+app.setQuitOnLastWindowClosed(False)
 
-def after_click(icon, query):
-    if str(query) == "Exit":
-        icon.stop()
+# Create the icon
+image_path = get_image()
+icon = QIcon(image_path)
 
-image = get_image() 
+# Create the tray
+tray = QSystemTrayIcon(icon=icon)
 
-icon = pystray.Icon("Sunset", image, "Sun Tray", menu=pystray.Menu(pystray.MenuItem("Exit", after_click)))
+tray.setVisible(True)
 
-print('Starting!')
-icon.run()
+# Create the menu
+menu = QMenu()
+
+menu.setStyleSheet('''QMenu {{
+                background: #F8F4E1;
+                border: 2px solid #4E1F00;
+                border-radius: {radius}px;
+            }}
+            QMenu::item {{
+                color: #FEBA17;
+            }}
+            QMenu::item:selected {{
+                color: #74512D;
+            }}
+        '''.format(radius=4))
+
+
+action = QAction("A menu item")
+menu.addAction(action)
+menu.addSeparator()
+
+# Add a Quit option to the menu.
+quit = QAction("Quit")
+quit.triggered.connect(app.quit)
+menu.addAction(quit)
+
+# Add the menu to the tray
+tray.setContextMenu(menu)
+
+app.exec()
