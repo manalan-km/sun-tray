@@ -83,9 +83,7 @@ class CustomDialog(QDialog):
     
     def setup_sunset_details(self):
        sunset_details_main = QVBoxLayout()
-       
-       widget = QWidget(self)
-       
+              
        title = QLabel("Today's Sunset Quality",alignment= Qt.AlignmentFlag.AlignCenter)
        title.setFont(QFont('Arial', 18))
        title.setContentsMargins(QMargins(0,0,0,0))
