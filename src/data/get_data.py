@@ -1,6 +1,5 @@
 from dotenv import load_dotenv
 import os
-from PIL import Image
 import requests
 
 load_dotenv()
@@ -24,7 +23,7 @@ def get_sunset_quality(api_key: str) -> str:
     print(f"Error with the request: {response.status_code}: {response.json()}")
         
     
-def get_image():
+def get_image() -> str:
     
     key = os.getenv('SUNSET_HUE_API_KEY')
     
@@ -48,4 +47,4 @@ def get_image():
         case _:
             image_path = 'src/sunrise.png'
           
-    return Image.open(image_path)
+    return  image_path
