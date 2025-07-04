@@ -6,8 +6,8 @@ load_dotenv()
 
 def get_sunset_quality(api_key: str) -> str: 
     
-    latitude =-38.15
-    longitude = 144.35809
+    latitude = os.getenv('LATITUDE')
+    longitude = os.getenv('LONGITUDE')
     date = datetime.today().strftime('%Y-%m-%d')
     type="sunset"
     

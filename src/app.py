@@ -1,9 +1,7 @@
 from data.get_data import get_image
 
-from PySide6.QtGui import QIcon, QAction, QPixmap
-from PySide6.QtWidgets import (QApplication, QSystemTrayIcon, QMenu, QDialog, 
-                               QVBoxLayout,QHBoxLayout,QDialogButtonBox, QLabel)
-from PySide6.QtCore import Qt
+from PySide6.QtGui import QIcon, QAction
+from PySide6.QtWidgets import (QApplication, QSystemTrayIcon, QMenu)
 
 from custom_dialog import CustomDialog
 
