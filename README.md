@@ -50,5 +50,6 @@ python3 src/main.py
 
  - [Sunsethue](https://sunsethue.com/)
  - [PySide6](https://github.com/matiassingers/awesome-readme)
+ - [Flaticon](https://www.flaticon.com/free-icons/sunset)
 
 
