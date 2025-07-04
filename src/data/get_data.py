@@ -1,14 +1,14 @@
 from dotenv import load_dotenv
 import os
 import requests
-
+from datetime import datetime
 load_dotenv()
 
 def get_sunset_quality(api_key: str) -> str: 
     
     latitude =-38.15
     longitude = 144.35809
-    date="2025-06-25"
+    date = datetime.today().strftime('%Y-%m-%d')
     type="sunset"
     
     api = f"https://api.sunsethue.com/event?latitude={latitude}&longitude={longitude}&date={date}&type={type}"
@@ -18,6 +18,7 @@ def get_sunset_quality(api_key: str) -> str:
     response = requests.get(api,headers=headers)
     
     if response.ok:
+                
         return response.json()['data']['quality_text']
     
     print(f"Error with the request: {response.status_code}: {response.json()}")

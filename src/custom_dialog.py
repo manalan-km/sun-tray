@@ -7,8 +7,9 @@ from PySide6.QtGui  import QPixmap
 
 
 class CustomDialog(QDialog):
-    def __init__(self):
+    def __init__(self, image_path):
         super().__init__()
+        self.sunset_image_path = image_path
         self.setup_ui()
         self.setup_explanation()
         self.apply_styles()
@@ -33,42 +34,37 @@ class CustomDialog(QDialog):
        setup_main_layout = QVBoxLayout()
        
        group_one_layout = QHBoxLayout()
-       image_one = QLabel()
+       image_one = QLabel(alignment=Qt.AlignmentFlag.AlignCenter)
        image_one.setPixmap(QPixmap('src/sunset-grey.png'))
-       label_one = QLabel('Poor', alignment=Qt.AlignmentFlag.AlignLeft)
-       label_one.setAlignment(Qt.AlignmentFlag.AlignVCenter)
+       label_one = QLabel('Poor', alignment=Qt.AlignmentFlag.AlignCenter)
        group_one_layout.addWidget(image_one)
        group_one_layout.addWidget(label_one)
        
        group_two_layout = QHBoxLayout()
-       image_two = QLabel()
+       image_two = QLabel(alignment=Qt.AlignmentFlag.AlignCenter)
        image_two.setPixmap(QPixmap('src/sunset-blue.png'))
-       label_two = QLabel('Fair', alignment=Qt.AlignmentFlag.AlignLeft)
-       label_two.setAlignment(Qt.AlignmentFlag.AlignVCenter)
+       label_two = QLabel('Fair', alignment=Qt.AlignmentFlag.AlignCenter)
        group_two_layout.addWidget(image_two)
        group_two_layout.addWidget(label_two)
        
        group_three_layout = QHBoxLayout()
-       image_three = QLabel()
+       image_three = QLabel(alignment=Qt.AlignmentFlag.AlignCenter)
        image_three.setPixmap(QPixmap('src/sunset-green.png'))
-       label_three = QLabel('Good', alignment=Qt.AlignmentFlag.AlignLeft)
-       label_three.setAlignment(Qt.AlignmentFlag.AlignVCenter)
+       label_three = QLabel('Good', alignment=Qt.AlignmentFlag.AlignCenter)
        group_three_layout.addWidget(image_three)
        group_three_layout.addWidget(label_three)
        
        group_four_layout = QHBoxLayout()
-       image_four = QLabel()
+       image_four = QLabel(alignment=Qt.AlignmentFlag.AlignCenter)
        image_four.setPixmap(QPixmap('src/sunset-yellow.png'))
-       label_four = QLabel('Great', alignment=Qt.AlignmentFlag.AlignLeft)
-       label_four.setAlignment(Qt.AlignmentFlag.AlignVCenter)
+       label_four = QLabel('Great', alignment=Qt.AlignmentFlag.AlignCenter)
        group_four_layout.addWidget(image_four)
        group_four_layout.addWidget(label_four)
        
        group_five_layout = QHBoxLayout()
-       image_five = QLabel()
+       image_five = QLabel(alignment=Qt.AlignmentFlag.AlignCenter)
        image_five.setPixmap(QPixmap('src/sunset.png'))
-       label_five = QLabel('Excellent', alignment=Qt.AlignmentFlag.AlignLeft)
-       label_five.setAlignment(Qt.AlignmentFlag.AlignVCenter)
+       label_five = QLabel('Excellent', alignment=Qt.AlignmentFlag.AlignCenter)
        group_five_layout.addWidget(image_five)
        group_five_layout.addWidget(label_five)
        
@@ -88,13 +84,12 @@ class CustomDialog(QDialog):
        title.setFont(QFont('Arial', 18))
        title.setContentsMargins(QMargins(0,0,0,0))
        
-       sunset =  QLabel(alignment=Qt.AlignmentFlag.AlignCenter)
-       sunset.setPixmap(QPixmap('src/sunset.png'))
+       sunset =  QLabel(alignment=Qt.AlignmentFlag.AlignHCenter)
+       sunset.setPixmap(QPixmap(self.sunset_image_path))
        
        
        sunset_details_main.addWidget(title)
        sunset_details_main.addWidget(sunset)
-       sunset_details_main.setSpacing(0)
        
        return sunset_details_main
          
@@ -109,10 +104,10 @@ class CustomDialog(QDialog):
             QLabel {
                 color: #4E1F00;
                 background: transparent;
-                border: 1px solid black;
                 margin: 0px;
                 font: Arial;
                 font-size: 20px;
+                
             }
             
             QPushButton {
